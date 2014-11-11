@@ -1,4 +1,36 @@
 == Calibration Certification Application
 
+Application for creating calibration certificates for field based engineers 
+
+Add customers then create a list of equipment for that customer. 
+Create a machine list for the custome then add certificates to each machine
 
 
+== Things to do
+
+Add PDF creation of tickets
+	Install whenever gem and PDF kit, mark all new certificates as sent once a cron task runs to send daily email to clients if they have new certificates
+
+Tidy up Views
+	Tidy up Views
+
+Users
+	Create a user edit page to add additional user info
+
+Install Rack offline for offline use
+
+	Test rack offline so that it can be used offline ??
+
+
+Install Will Paginate 
+	Add page pagination
+
+Install Search gem
+	Add Good Search Gem
+
+For more info or to join the delevopment team please email sales@igpython.co.uk
+
+
+
+== Licence
+MIT 
