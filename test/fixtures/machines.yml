@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 1
+  make: MyString
+  model: MyString
+  serial_number: MyString
+  capacity: 1
+  division_size: 9.99
+  units: MyString
+  last_calibration_date: 2014-10-13
+  due_date: 2014-10-13
+
+two:
+  customer_id: 1
+  make: MyString
+  model: MyString
+  serial_number: MyString
+  capacity: 1
+  division_size: 9.99
+  units: MyString
+  last_calibration_date: 2014-10-13
+  due_date: 2014-10-13

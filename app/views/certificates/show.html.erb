@@ -1,0 +1,300 @@
+
+<div class="certificate">
+<div class="row" id= "header">
+  <div class="col-md-6">
+    <h1 class="company-name">D Brash & Sons Ltd</h1>
+    <p>Calibra House, Splott Industrial Estate  <br/>
+      Splott, Cardiff, CF24 5FF <br/>
+      email: sales@brash-scales.com</p>
+  </div>
+  <div class="col-md-4 pull-right">
+    <%= image_tag 'logo.png', :class => 'logo-class' %>
+    <h1><small>Certificate No: <%= @certificate.certificate_number %></small></h1>
+  </div>
+</div>
+<div class="row" id="subhead">
+  <div class="col-md-12">
+    <h1 class="text-center">Certificate of Calibration <small></small></h1>
+    <br/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="box">
+      <h4><%= @certificate.customer.name %></h4>
+      <p>
+        <%= @certificate.customer.address %><br/>
+        <%= @certificate.customer.street %><br/>
+        <%= @certificate.customer.town %><br/>
+        <%= @certificate.customer.city %><br/>
+      </p>
+      
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-5">
+      <h5>Customer Ref:</h5>
+      <h5>Manufacturer:</h5>
+      <h5>Type:</h5>
+      <h5>Serial No:</h5>
+      <h5>Capacity: </h5>
+      <% unless @certificate.machine.capacity_2.blank? %>
+        <h5>Capacity Range 2 </h5>
+      <% end %>
+      <% unless @certificate.machine.capacity_3.blank? %>
+      <h5>Capacity Range 3: </h5>
+      <% end %>
+      <h5>Next Due:</h5>
+    </div>
+    <div class="col-md-7">
+      <h5><strong><%= @certificate.customer_reference %> </strong>&nbsp;</h5>
+      <h5><%= @certificate.machine.make %> &nbsp;</h5>
+      <h5><%= @certificate.machine.model %> &nbsp;</h5>
+      <h5><%= @certificate.machine.serial_number %> &nbsp;</h5>
+      <h5><%= @certificate.machine.capacity %> &nbsp;<%= @certificate.machine.units %>&nbsp; x &nbsp; <%= @certificate.machine.division_size %> &nbsp; <%= @certificate.machine.units %>&nbsp;</h5>
+      <% unless @certificate.machine.capacity_2.blank? %>
+        <h5><%= @certificate.machine.capacity_2 %> &nbsp;<%= @certificate.machine.units %>&nbsp; x &nbsp; <%= @certificate.machine.division_size_2 %> &nbsp; <%= @certificate.machine.units %>&nbsp;</h5>
+      <% end %>
+      <% unless @certificate.machine.capacity_3.blank? %>
+        <h5><%= @certificate.machine.capacity_3 %> &nbsp;<%= @certificate.machine.units %>&nbsp; x &nbsp; <%= @certificate.machine.division_size_3 %> &nbsp; <%= @certificate.machine.units %>&nbsp;</h5>
+      <% end %>
+      <h5><%= @certificate.next_certification_date %></h5>
+    </div>
+  </div>
+</div>
+<div class="row" id="statement">
+  <div class='col-md-12 shaded'>
+    <p class="text-center statement shaded">All Test Weights are tracable to the National Physical Standard as certified by a UKAS Accredited Laboratory</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr span="3">
+          <h6><small>Test Weight Details</small></h5>
+        </tr>
+        <tr>
+          <th>Set Number</th>
+          <th>Certificate Number</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          
+        </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr span="2">
+          <h6><small>Deviation / Tolerance for Compliance +/- </small></h6>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @certificate.tolerance_1_range %> </td>
+          <td>+/- <%= @certificate.tolerance_1_actual %> </td>
+        </tr>
+        <tr>
+          <td><%= @certificate.tolerance_2_range %> </td>
+          <td>+/-<%= @certificate.tolerance_2_actual %> </td>
+        </tr>
+        <tr>
+          <td><%= @certificate.tolerance_3_range %> </td>
+          <td>+/-<%= @certificate.tolerance_3_actual %> </td>
+        </tr>
+        <tr>
+          <td> &nbsp;</td>
+          <td></td>
+        </tr>
+      </tbody>
+
+    </table>
+      
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr span="5"> <h6> <small> Post Adjustment Hysteresis </small> </h6> 
+        </tr>
+        <tr>
+          <th>Load</th>
+          <th>Loading</th>
+          <th>Dev</th>
+        </tr>
+      </thead>
+      <tbody>
+       <tr>
+           <td><%= @certificate.testpoint_1 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_1 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_1_dev %>&nbsp;</td>
+        </tr>
+        <tr>
+           <td><%= @certificate.testpoint_2 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_2 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_2_dev %>&nbsp;</td>
+        </tr>
+        <tr>
+           <td><%= @certificate.testpoint_3 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_3 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_3_dev %>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><%= @certificate.testpoint_4 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_4 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_4_dev %>&nbsp;</td>
+        </tr>
+        <tr>
+           <td><%= @certificate.testpoint_5 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_5 %>&nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_5_dev %>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><%= @certificate.testpoint_6 %> &nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_6 %> &nbsp;</td>
+           <td><%= @certificate.definitive_testpoint_6_dev %> &nbsp;</td>
+        </tr>
+
+      </tbody>
+    </table>
+        
+    
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr span="3">
+          <h6><small>Post Adjustment Repeatability</small></h5>
+        </tr>
+        <tr>
+          <th colspan="2">Unloded</th>
+          <th>Loaded</th>
+          <th colspan="2">Unloaded</th>
+          <th>Loaded</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width:10px;">1</td>
+          <td><%= @certificate.repeatability_1_unloaded %>&nbsp;</td>
+          <td><%= @certificate.repeatability_1_loaded %>&nbsp;</td>
+          <td style="width:10px;">4</td>
+          <td><%= @certificate.repeatability_4_unloaded %>&nbsp;</td>
+          <td><%= @certificate.repeatability_4_loaded %>&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="width:10px;">2</td>
+          <td><%= @certificate.repeatability_2_unloaded %>&nbsp;</td>
+          <td><%= @certificate.repeatability_2_loaded %>&nbsp;</td>
+          <td style="width:10px;">5</td>
+          <td><%= @certificate.repeatability_5_unloaded %>&nbsp;</td>
+          <td><%= @certificate.repeatability_5_loaded %>&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="width:10px;">3</td>
+          <td><%= @certificate.repeatability_3_unloaded %>&nbsp;</td>
+          <td><%= @certificate.repeatability_3_loaded %>&nbsp;</td>
+          <td style="width:10px;">6</td>
+          <td><%= @certificate.repeatability_6_unloaded %>&nbsp;</td>
+          <td><%= @certificate.repeatability_6_loaded %>&nbsp;</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+  
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag("corner.jpg", :class=> "corner_image") %>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr span="3">
+          <h6><small>Post Adjustment Eccentric Loading</small></h5>
+          </tr>
+          <tr>
+            <th colspan="2">Reading</th>
+            <th>Dev</th>
+            <th colspan="2">Reading</th>
+            <th>Dev</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width: 10px;">1</td>
+            <td><%= @certificate.definitive_eccentric_1 %>&nbsp;</td>
+            <td><%= @certificate.definitive_eccentric_1_dev %>&nbsp;</td>
+            <td style="width: 10px;">2</td>
+            <td><%= @certificate.definitive_eccentric_2 %>&nbsp;</td>
+            <td><%= @certificate.definitive_eccentric_2_dev %>&nbsp;</td>
+          </tr>
+          <tr>
+           <td>3</td>
+           <td><%= @certificate.definitive_eccentric_3 %>&nbsp;</td>
+           <td><%= @certificate.definitive_eccentric_3_dev %>&nbsp;</td>
+           <td>4</td>
+           <td><%= @certificate.definitive_eccentric_4 %>&nbsp;</td>
+           <td><%= @certificate.definitive_eccentric_4_dev %>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>5</td>
+          <td><%= @certificate.definitive_eccentric_5 %>&nbsp;</td>
+          <td><%= @certificate.definitive_eccentric_5_dev %>&nbsp;</td>
+          <td>6</td>
+          <td><%= @certificate.definitive_eccentric_6 %>&nbsp;</td>
+          <td><%= @certificate.definitive_eccentric_6_dev %>&nbsp;</td>
+        </tr><tr>
+          <td>7</td>
+          <td><%= @certificate.definitive_eccentric_7 %>&nbsp;</td>
+          <td><%= @certificate.definitive_eccentric_7_dev %>&nbsp;</td>
+          <td>8</td>
+          <td><%= @certificate.definitive_eccentric_8 %>&nbsp;</td>
+          <td><%= @certificate.definitive_eccentric_8_dev %>&nbsp;</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 shaded">
+   <p class="text-center statement">The above equipment has been tested in accordance with the United Kingdom Weighing Fereration Guidelines</p>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+$("#navbar").hide();
+</script>
+
+

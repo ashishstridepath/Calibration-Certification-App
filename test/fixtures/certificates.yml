@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  certificate_number: false
+  machine_id: false
+  customer_id: false
+
+two:
+  certificate_number: false
+  machine_id: false
+  customer_id: false

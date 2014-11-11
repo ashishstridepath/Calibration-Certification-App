@@ -1,0 +1,28 @@
+.box{
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 10px 10px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	min-height: 170px;
+	
+}
+
+.company-name{
+	margin-top: 0px;
+}
+.logo-class{
+	margin-top: 5px;
+}
+.border-top{
+	border-top: 1px solid lightgrey;
+}
+.border-right{
+	border-right: 1px solid lightgrey;
+}
+.border-bottom{
+	border-bottom: 1px solid lightgrey;
+}
+.light-font{
+	font-weight: 200;
+}

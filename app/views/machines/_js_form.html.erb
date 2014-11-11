@@ -1,0 +1,95 @@
+<div class="row">
+<%= form_for @machine, :html => { :class => 'form-horizontal' } do |f| %>
+	<div class="col-md-6" id="left-col">
+		<%= f.hidden_field :customer_id, :value => @customer.id if @customer %>
+		<div class="form-group">
+			<%= f.label :make, :class => 'col-sm-3 control-label' %>
+			<div class="col-sm-9">
+				<%= f.text_field :make, :class => 'form-control', :placeholder => 'Equipment Manufacturer' %>
+				<p class="help-block">Manufacturer i.e Avery , Sartorius, Ohaus Brash</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :model, :class => 'col-sm-3 control-label' %>
+			<div class="col-sm-9">
+				<%= f.text_field :model, :class => 'form-control', :placeholder => 'Model Number' %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :serial_number,"Serial No:",  :class => 'col-sm-3 control-label' %>
+			<div class="col-sm-9">
+				<%= f.text_field :serial_number, :class => 'form-control', :placeholder => 'Serial Number or ID Number' %>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6" id="right-col">
+		<div class="form-group">
+			<%= f.label :capacity, :class => 'col-sm-3 control-label' %>
+			<div class="col-sm-8">
+				<div class="col-md-7">
+					<%= f.number_field :capacity, :class => 'form-control', :placeholder => 'Max'%>
+				</div>
+				<div class='col-md-5'>
+					<%= f.text_field :division_size, :class => 'form-control', :placeholder => 'Div' %>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class='col-md-4'>
+     			<%= f.label :multiRange, :class => 'col-sm-4 control-label' %>
+     		</div>
+     		<%= f.check_box :multiRange, :class => 'form-control col-sm-5' %> 
+    	</div>
+    	<div id='multiRange'>
+	    	<div class="form-group">
+				<%= f.label :capacity_2, :class => 'col-sm-3 control-label' %>
+				<div class="col-sm-8">
+					<div class="col-md-7">
+						<%= f.number_field :capacity_2, :class => 'form-control', :placeholder => 'Max'%>
+					</div>
+					<div class='col-md-5'>
+						<%= f.text_field :division_size_2, :class => 'form-control', :placeholder => 'Div' %>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :capacity_3, :class => 'col-sm-3 control-label' %>
+				<div class="col-sm-8">
+					<div class="col-md-7">
+						<%= f.number_field :capacity_3, :class => 'form-control', :placeholder => 'Max'%>
+					</div>
+					<div class='col-md-5'>
+						<%= f.text_field :division_size_3, :class => 'form-control', :placeholder => 'Div' %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :units, :class => 'col-sm-3 control-label' %>
+			<div class="col-sm-5">
+				<%= f.select :units, options_for_select([['Kg'],['g']], @machine.units),{:include_blank => false}, {:class => 'form-control'} %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :last_calibration_date, 'Last Cal', :class => 'col-sm-3 control-label' %>
+			<div class="col-sm-5">
+				<%= f.text_field :last_calibration_date, :class => 'form-control', :placeholder => 'Last Cal Date'%>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :due_date, :class => 'col-sm-3 control-label' %>
+			<div class="col-sm-5">
+				<%= f.text_field :due_date, :value => Date.today, :class => 'form-control', :placeholder => 'Next Cal Date'  %>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+      <div class="modal-footer">
+      	<%= f.submit nil, :class=>'btn btn-success' %>
+      </div>
+	
+<% end %>	
+
+

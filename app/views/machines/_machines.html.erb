@@ -1,0 +1,35 @@
+<%- model_class = Machine -%>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= check_box_tag "selectAll" %></th>
+      <th><%= model_class.human_attribute_name(:make) %></th>
+      <th><%= model_class.human_attribute_name(:model) %></th>
+      <th><%= model_class.human_attribute_name(:serial_number) %></th>
+      <th><%= model_class.human_attribute_name(:capacity) %></th>
+      <th><%= model_class.human_attribute_name(:division_size) %></th>
+      <th><%= model_class.human_attribute_name(:last_calibration_date) %></th>
+      <th>Next Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @machines and @machines.count >0 %>
+      <% @customer.machines.each do |machine| %>
+        <tr class="selected-row"  style=" <%= background(machine.due_date) %> " >
+          <td><%= check_box_tag "machines[]", machine.id %></td>
+          <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.make %></td>
+          <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.model %></td>
+          <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.serial_number %></td>
+          <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.capacity %>&nbsp; <%= machine.units %></td>
+          <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= pretty_number(machine.division_size) %> &nbsp; <%= machine.units %></td>
+          <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.last_calibration_date %></td>
+          <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.due_date %></td>
+          <td><%= link_to 'edit', edit_machine_path(machine, format: :js), :remote => true, :class => "btn btn-xs btn-default" %>
+              <%= link_to 'New Certificate', new_certificate_path(:machine => machine.id, format: :js), :remote => true, :class => "btn btn-default btn-xs" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

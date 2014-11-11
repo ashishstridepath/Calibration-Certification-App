@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_certificate_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Certificate
+  <% end %>
+  <h1>Listing certificates</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+            <th>Certificate number</th>
+            <th>Machine</th>
+            <th>Customer</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @certificates) do |certificate| %>
+            <td><%= certificate.certificate_number %></td>
+            <td><%= certificate.machine_id %></td>
+            <td><%= certificate.customer_id %></td>
+            <td><%= link_to 'Show', certificate %>
+        <%= link_to 'Edit', edit_certificate_path(certificate) %>
+        <%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
