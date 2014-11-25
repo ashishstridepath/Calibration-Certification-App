@@ -3,32 +3,65 @@
 Application for creating calibration certificates for field based engineers 
 
 Add customers then create a list of equipment for that customer. 
-Create a machine list for the custome then add certificates to each machine
+Create a machine list for the customer then add certificates to each machine
 
 
 == Things to do
 
+Add send email 
+
+
 Add PDF creation of tickets
-	Install whenever gem and PDF kit, mark all new certificates as sent once a cron task runs to send daily email to clients if they have new certificates
+	Install PDF kit to create PDF from certificates show view
+	Add a sent tag boolean to certificates to mark them as sent
+	Install whenever Gem to create a function 
+	Create a function to automatically send certificates to clients at 5PM each day that hare not marked sent
+		Certificates must me as a PDF attachment and 1 attachment per certificate or multipage ??
+		PDF kit, mark all new certificates as sent once a cron task runs to send daily email to clients if they have new certificates
+
 
 Tidy up Views
 	Tidy up Views
+	Add will-paginate gem 	
+	Add Search with ransack gem
+	Redesign test weight forms add/edit/show and index page 
+
+Features:
+	Do Not allow users to sign up
+	Add send by email for certificates list view with multi-select if sending more than one 
+	Add filter on this view to show current certificate or all certificates with select box to remove filter so java the view or refresh page on select
+
+	Add admin section to /admin to add users
+	Add an ID to users so that customers can be grouped by that ID in which case users can only see the clients assigned to them one client may be assigned to multiple users
+
+	Add client log in area
+	Allow clients to log in with a suppled user-name and password, they will land on a /client logon page and enter their email address if the email is found in the customer file then a password will be emailed to them
+
+	A client can only see their own sites cannot delete or edit certificates only search and view / send them by PDF or download as PDF
+
+	Add user types / permissions
+
+	User type - ADMIN 		-	See and Edit everything
+				Engineer 	-	Only Add Machines and create new certificates
+				Customer 	-	Only See their own site and machine list 
+
+	ONLY AFTER COMPLETION OF ALL OTHER WORK
+	Add a new certificate type called NHS
+		Assign a certificate type against a client Options for ISO or NHS As type from dropdown
+		If the type is NHS produce a simple certificate version with no readings only tick boxes
+
+
+
 
 Users
 	Create a user edit page to add additional user info
 
-Install Rack offline for offline use
+Install Rack off line for off-line use
 
-	Test rack offline so that it can be used offline ??
+	Test rack off line so that it can be used offline ??
 
 
-Install Will Paginate 
-	Add page pagination
-
-Install Search gem
-	Add Good Search Gem
-
-For more info or to join the delevopment team please email sales@igpython.co.uk
+For more info or to join the development team please email sales@igpython.co.uk paid work available!
 
 
 
