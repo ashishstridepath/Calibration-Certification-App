@@ -1,5 +1,8 @@
 BrashCalibration::Application.routes.draw do
 
+  resources :test_weights
+
+
   resources :certificates
 
 

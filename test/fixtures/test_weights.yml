@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  certificateNumber: MyString
+  dateCalibrated: 2014-11-11
+
+two:
+  certificateNumber: MyString
+  dateCalibrated: 2014-11-11

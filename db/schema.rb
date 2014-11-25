@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141027093800) do
+ActiveRecord::Schema.define(:version => 20141125113010) do
 
   create_table "certificates", :force => true do |t|
     t.integer  "certificate_number"
@@ -91,6 +91,16 @@ ActiveRecord::Schema.define(:version => 20141027093800) do
     t.date     "date_completed"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.boolean  "emailSent"
+    t.string   "test_weight_1_set_number"
+    t.date     "test_weight_1"
+    t.string   "test_weight_2_set_number"
+    t.date     "test_weight_2"
+    t.string   "test_weight_3_set_number"
+    t.date     "test_weight_3"
+    t.string   "test_weight_1_certificate_number"
+    t.string   "test_weight_2_certificate_number"
+    t.string   "test_weight_3_certificate_number"
   end
 
   create_table "customers", :force => true do |t|
@@ -124,6 +134,14 @@ ActiveRecord::Schema.define(:version => 20141027093800) do
     t.integer  "capacity_3"
     t.decimal  "division_size_3"
     t.boolean  "multiRange"
+  end
+
+  create_table "test_weights", :force => true do |t|
+    t.string   "certificate_number"
+    t.date     "date_calibrated"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "name"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_test_weight_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Test weight
+  <% end %>
+  <h1>Listing test_weights</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Set Name:</th>
+            <th>Certificate Number</th>
+            <th>Date Calibrated</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @test_weights) do |test_weight| %>
+            <td><%= test_weight.name %></td>
+            <td><%= test_weight.certificate_number %></td>
+            <td><%= test_weight.date_calibrated %></td>
+            <td><%= link_to 'Show', test_weight %></td>
+        <td><%= link_to 'Edit', edit_test_weight_path(test_weight) %></td>
+        <td><%= link_to 'Destroy', test_weight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
