@@ -2,11 +2,15 @@ class TestWeightsController < ApplicationController
   # GET /test_weights
   # GET /test_weights.json
   def index
-    @test_weights = TestWeight.where("date_calibrated > ?", Date.today() - 12.months)
+    
+    @search = TestWeight.search(params[:q])
+    @test_weights = @search.result
+    @test_weights = TestWeight.where("date_calibrated > ?", Date.today() -  12.months).paginate( :per_page => 1, :page => params[:page])
+   
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @test_weights }
+      format.js
     end
   end
 
@@ -17,7 +21,7 @@ class TestWeightsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @test_weight }
+      format.js
     end
   end
 

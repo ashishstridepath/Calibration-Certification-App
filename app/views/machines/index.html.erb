@@ -2,6 +2,21 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<div class="row">
+  <div class="col-lg-3 pull-right">
+      <div class="input-group custom-search-form">
+           <%= search_form_for @search do |f| %>
+              <div class="field">
+                <%= f.label :make_cont, "Search Machine" %>
+                <%= f.text_field :make_cont, :placeholder => ' Make Type' %>
+              </div>
+              <div class="actions"><%= f.submit "Search", :class => "button" %></div>
+            <% end %>            
+       </div><!-- /input-group -->
+    </div>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -29,7 +44,7 @@
         <td><%= machine.due_date %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_machine_path(machine), :class => 'btn btn-mini' %>
+                      edit_machine_path(machine), :class => 'btn btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       machine_path(machine),
                       :method => :delete,
@@ -44,3 +59,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_machine_path,
             :class => 'btn btn-primary' %>
+            
+            
+            <div align="center"><%= will_paginate @machines, renderer: BootstrapPagination::Rails %>
+         </div>

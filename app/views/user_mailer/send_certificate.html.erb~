@@ -1,0 +1,10 @@
+<p>Hello</p>
+
+  <p>
+     <%= @customer.contact_name %> 
+  </p>
+ 
+    <p>This is Your New Certificate ! </p>
+    
+ 
+ 

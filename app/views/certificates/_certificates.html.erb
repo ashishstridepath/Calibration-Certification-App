@@ -25,9 +25,9 @@
             <td><%= certificate.next_certification_date %></td>
             <td>
 
-              <%= link_to 'View', certificate, :"data-popup" => true  %>
+              <%= link_to 'View', certificate, :"data-popup" => true, :class => 'btn btn-primary'  %>
         <% link_to 'Edit', edit_certificate_path(certificate) %>
-        <%= link_to 'Destroy', certificate, :class => 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+        <%= link_to 'Destroy', certificate, :class => 'btn  btn-danger', method: :delete, data: { confirm: 'Are you sure?' }  %></td>
       <% end %>
     </tbody>
   </table>

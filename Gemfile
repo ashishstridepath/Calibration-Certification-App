@@ -6,6 +6,7 @@ gem 'pg'
 gem 'bootstrap-generators', :git => 'git://github.com/decioferreira/bootstrap-generators.git'
 gem "therubyracer"
 gem 'jquery-rails'
+gem 'whenever', :require => false
 gem 'devise'
 
 # Gems used only for assets and not required
@@ -17,8 +18,9 @@ group :assets do
   gem 'jquery-ui-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
+  gem 'will_paginate-bootstrap'
   gem 'uglifier', '>= 1.0.3'
+  gem 'ransack'
 end
 
 

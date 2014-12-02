@@ -87,6 +87,8 @@
 </div>
 <div class="modal-footer">
   <%= f.submit nil, :class=>'btn btn-success', :onclick => 'document.forms["thisform"].submit()' %>
+   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    :back, :class => 'btn btn-primary' %>
 </div>
 
 <% end %> 

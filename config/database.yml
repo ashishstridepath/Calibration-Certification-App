@@ -17,8 +17,8 @@ development:
   encoding: unicode
   database: Brash_Calibration_development
   pool: 5
-  username: Brash
-  password: Brash1879
+  username: ashish
+  password: ashish	
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -43,13 +43,13 @@ test:
   encoding: unicode
   database: Brash_Calibration_test
   pool: 5
-  username: Brash
-  password: Brash1879
+  username: ashish
+  password: ashish
 
 production:
   adapter: postgresql
   encoding: unicode
   database: Brash_Calibration_production
   pool: 5
-  username: Brash
-  password: Brash1879
+  username: ashish
+  password: ashish

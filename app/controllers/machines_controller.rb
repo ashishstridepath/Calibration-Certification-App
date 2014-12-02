@@ -2,7 +2,9 @@ class MachinesController < ApplicationController
   # GET /machines
   # GET /machines.json
   def index
-    @machines = Machine.all
+    @search = Machine.search(params[:q])
+    @machines = @search.result.paginate( :per_page => 1, :page => params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb

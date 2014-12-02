@@ -25,8 +25,8 @@
           <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= pretty_number(machine.division_size) %> &nbsp; <%= machine.units %></td>
           <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.last_calibration_date %></td>
           <td data-open='<%= certificate_path(machine.certificates.last) unless machine.certificates.blank? %>'><%= machine.due_date %></td>
-          <td><%= link_to 'edit', edit_machine_path(machine, format: :js), :remote => true, :class => "btn btn-xs btn-default" %>
-              <%= link_to 'New Certificate', new_certificate_path(:machine => machine.id, format: :js), :remote => true, :class => "btn btn-default btn-xs" %>
+          <td><%= link_to 'edit', edit_machine_path(machine, format: :js), :remote => true, :class => "btn btn-primary" %>
+              <%= link_to 'New Certificate', new_certificate_path(:machine => machine.id, format: :js), :remote => true, :class => "btn btn-default btn btn-success" %>
           </td>
         </tr>
       <% end %>

@@ -24,10 +24,14 @@
             <td><%= certificate.certificate_number %></td>
             <td><%= certificate.machine_id %></td>
             <td><%= certificate.customer_id %></td>
-            <td><%= link_to 'Show', certificate %>
-        <%= link_to 'Edit', edit_certificate_path(certificate) %>
-        <%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', certificate, :class => "btn btn-primary"  %>
+        <%= link_to 'Edit', edit_certificate_path(certificate),:class => "btn btn-primary"  %>
+        <%= link_to 'Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
       <% end %>
     </tbody>
   </table>
 </div>
+
+
+<div align="center"><%= will_paginate @certificates, renderer: BootstrapPagination::Rails %>
+         </div>

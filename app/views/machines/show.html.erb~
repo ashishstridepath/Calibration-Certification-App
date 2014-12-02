@@ -1,0 +1,37 @@
+<%- model_class = Machine -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:customer_id) %>:</strong></dt>
+  <dd><%= @machine.customer_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:make) %>:</strong></dt>
+  <dd><%= @machine.make %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>
+  <dd><%= @machine.model %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:serial_number) %>:</strong></dt>
+  <dd><%= @machine.serial_number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:capacity) %>:</strong></dt>
+  <dd><%= @machine.capacity %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:division_size) %>:</strong></dt>
+  <dd><%= @machine.division_size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:units) %>:</strong></dt>
+  <dd><%= @machine.units %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:last_calibration_date) %>:</strong></dt>
+  <dd><%= @machine.last_calibration_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:due_date) %>:</strong></dt>
+  <dd><%= @machine.due_date %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              machines_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_machine_path(@machine), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              machine_path(@machine),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

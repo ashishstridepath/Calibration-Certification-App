@@ -2,7 +2,8 @@ class CertificatesController < ApplicationController
 
 
   def index
-    @certificates = Certificate.all
+    @certificates = Certificate.all.paginate( :per_page => 1, :page => params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb

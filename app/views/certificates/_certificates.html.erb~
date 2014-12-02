@@ -1,0 +1,34 @@
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+            <th></th>
+            <th>No</th>
+            <th>Machine</th> 
+            <th>Serial No</th>
+            <th>Date Calibrated</th>
+            <th>Next Due</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @certificates) do |certificate|  %>
+            <td><%= check_box_tag "certificates[]", certificate.id %></td>
+            <td><%= certificate.certificate_number %></td>
+            <td><%= certificate.machine.make if certificate.machine %></td>
+            <td><%= certificate.machine.serial_number if certificate.machine %></td>
+            <td><%= certificate.date_completed %></td>
+            <td><%= certificate.next_certification_date %></td>
+            <td>
+
+              <%= link_to 'View', certificate, :"data-popup" => true  %>
+        <% link_to 'Edit', edit_certificate_path(certificate) %>
+        <%= link_to 'Destroy', certificate, :class => 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

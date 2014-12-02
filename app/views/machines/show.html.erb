@@ -26,9 +26,9 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              machines_path, :class => 'btn'  %>
+              machines_path, :class => 'btn btn-primary'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_machine_path(@machine), :class => 'btn' %>
+              edit_machine_path(@machine), :class => 'btn btn-primary' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               machine_path(@machine),
               :method => 'delete',

@@ -1,0 +1,101 @@
+<%- model_class = Customer -%>
+<div class="page-header">
+  <h2><%= @customer.name if @customer%></h2>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <strong><%= model_class.human_attribute_name(:account_number) %>:</strong><br/>
+    <strong><%= model_class.human_attribute_name(:name) %>:</strong></br>
+    <strong><%= model_class.human_attribute_name(:address) %>:</strong></br>
+  </div>
+  <div class="col-md-4">
+    <%= @customer.account_number %><br/>
+    <%= @customer.name %><br/>
+    <%= @customer.address %><br/>
+  </div>
+</div>
+<div class="row">
+  <hr/>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#machines" role="tab" data-toggle="tab">Machine List</a></li>
+  <li><a href="#certificates" role="tab" data-toggle="tab">Certificates</a></li>
+</ul> 
+
+<div class="tab-content">
+  <div class="tab-pane active" id="machines">
+    <%= form_tag destroy_multiple_machines_path, method: :delete, :remote => true do %>
+      <div class="" id="machine_lines">
+        <%= render "machines/machines" %>
+      </div>
+      <div class="row">
+        <div class="col-md-3 pull-right">
+          <%= submit_tag "Remove", :class => "btn btn-danger pull-right" %>
+      &nbsp;
+      
+          <%= link_to "Add", "#new_machine_modal", :data => { :toggle=>"modal" }, :class => "btn btn-primary pull-right" %>
+        </div>
+      </div> <% end %>
+  </div>
+
+
+
+
+<div class="tab-pane" id="certificates">
+  
+  <%= render "certificates/certificates" %>
+
+</div>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+  customers_path, :class => 'btn btn-action'  %>
+</div>
+
+
+
+
+
+<div class="modal" id="new_machine_modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+        <h4> Add Machine </h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'machines/js_form' %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modal-window">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+        <h4><%=t '.title', :default => ['Machine Details'], :model => model_class.model_name.human.titleize %></h4>
+      </div>
+      <div class="modal-body" id="edit_modal_body">
+
+      </div>
+     
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="certificate-modal-window">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+        <h4>New Certificate</h4>
+      </div>
+      <div class="modal-body" id="certificate_modal_body">
+      </div>
+    </div>
+  </div>
+</div>

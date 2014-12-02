@@ -2,8 +2,8 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
-
+    @search = Customer.search(params[:q])
+    @customers = @search.result.paginate( :per_page => 1, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -49,6 +49,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+         
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
       else
         format.html { render action: "new" }

@@ -1,0 +1,259 @@
+<%= form_for(@certificate, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @certificate.errors.any? %>
+<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4><%= pluralize(@certificate.errors.count, "error") %> prohibited this certificate from being saved:</h4>
+
+  <ul>
+    <% @certificate.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<!-- Tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#Linearity" role="tab" data-toggle="tab">Test Results</a></li>
+  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+</ul>
+
+
+
+<div class="tab-content">
+  <div class="tab-pane active" id="Linearity">
+
+    <div class="row">
+      <div class="col-md-12">
+        <hr/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <h5 class="light-font">Test Weight Details</h5>
+      </div>
+      <div class="col-md-3">
+        <%= f.collection_select :weight_id_1, TestWeight.order('name ASC').all, :id, :name, {:include_blank => ' Select Test Weight'} %>
+      </div>
+      <div class="col-md-3">
+        <%= f.collection_select :weight_id_2, TestWeight.order('name ASC').all, :id, :name, {:include_blank => ' Select Test Weight'}%>
+      </div>
+      <div class="col-md-3">
+        <%= f.collection_select :weight_id_3, TestWeight.order('name ASC').all, :id, :name, {:include_blank => ' Select Test Weight'} %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5">
+          <h5 class="light-font text-center"> Post Adjustment Linearity</h5>
+        </div>
+        <div class="col-md-5">
+          <h5 class="light-font text-center">Post Adjustment Repeatability </h5>
+        </div>
+      </div>
+    </div> <!-- end row -->
+    <div class="row" id="cal-content">
+      <div class="col-md-2 border-top border-right">
+        <div class="col-md-10">
+          <h6><small>Test Points</small></h6>
+          <div class="form-group">
+            <%= f.text_field :testpoint_1, :class => 'form-control', :value => 0 %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :testpoint_2, :class => 'form-control', :value => tp(@machine.capacity, 1) if @machine %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :testpoint_3, :class => 'form-control', :value => tp(@machine.capacity, 2) if @machine %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :testpoint_4, :class => 'form-control', :value => tp(@machine.capacity, 3) if @machine %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :testpoint_5, :class => 'form-control', :value => tp(@machine.capacity, 4) if @machine %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :testpoint_6, :class => 'form-control', :value => tp(@machine.capacity, 5) if @machine %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10 border-top ">
+
+        <div class="col-md-6 ">
+          <div class="col-md-5">
+            <h6><small>Loading</small></h6>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_1, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_2, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_3, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_4, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_5, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_6, :class => 'form-control'%>
+            </div>
+          </div>
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-3">
+            <h6><small>Dev</small></h6>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_1_dev, :class => 'form-control', :readonly => true%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_2_dev, :class => 'form-control', :readonly => true%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_3_dev, :class => 'form-control', :readonly => true%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_4_dev, :class => 'form-control', :readonly => true%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_5_dev, :class => 'form-control', :readonly => true%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :definitive_testpoint_6_dev, :class => 'form-control', :readonly => true%>
+            </div>
+          </div>
+          <div class="col-md-1 border-right">
+
+          </div>
+        </div>
+        <!-- end left col -->
+        <div class="col-md-6 border-right">
+          <div class="col-md-6">
+            <h6><small>UnLoaded</small></h6>
+            <div class="form-group">
+              <%= f.text_field :repeatability_1_unloaded, :class => 'form-control', :value => 0%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_2_unloaded, :class => 'form-control', :value => 0 %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_3_unloaded, :class => 'form-control', :value => 0 %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_4_unloaded, :class => 'form-control', :value => 0 %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_5_unloaded, :class => 'form-control', :value => 0 %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_6_unloaded, :class => 'form-control', :value => 0 %>
+            </div>
+          </div>
+          <div class="col-md-5 pull-right">
+            <h6><small>Loaded</small></h6>
+            <div class="form-group">
+              <%= f.text_field :repeatability_1_loaded, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_2_loaded, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_3_loaded, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_4_loaded, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_5_loaded, :class => 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :repeatability_6_loaded, :class => 'form-control'%>
+            </div>
+          </div> 
+        </div> 
+      </div>
+    </div> <!-- end content row -->
+    <div class="row border-top"> <!-- Corner Tests -->
+      <div class="col-md-6 border-right"> <!-- left col -->
+        <div class="col-md-12 ">
+          <h5 class="light-font text-center "> Escentric Loading</h5>
+          <div class="col-md-2">
+            <%= f.label :definitive_eccentric_1,"1", :class=>"form-label" %>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.text_field :definitive_eccentric_1, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="col-md-2 ">
+            <%= f.label :definitive_eccentric_2,"2", :class=>"form-label" %>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.text_field :definitive_eccentric_2, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="col-md-2 ">
+            <%= f.label :definitive_eccentric_3,"3", :class=>"form-label" %>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.text_field :definitive_eccentric_3, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="col-md-2 ">
+            <%= f.label :definitive_eccentric_4,"4", :class=>"form-label" %>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.text_field :definitive_eccentric_4, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="col-md-2 ">
+            <%= f.label :definitive_eccentric_5,"5", :class=>"form-label" %>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.text_field :definitive_eccentric_5, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="col-md-2 ">
+            <%= f.label :definitive_eccentric_6,"6", :class=>"form-label" %>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.text_field :definitive_eccentric_6, :class => 'form-control' %>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="col-md-12">
+          <%= image_tag("corner.jpg", :class=> "corner_image") %>
+        </div>   
+      </div>
+    </div>
+  </div><!-- End of page 1 -->
+</div> <!-- Close Linearity Tab -->
+ 
+  <!-- Close repeatability Tab -->
+</div> <!-- Close Tabs-->
+
+
+<div class="modal-footer">
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+</div>
